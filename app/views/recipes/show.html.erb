@@ -1,0 +1,25 @@
+<div class="container pt-6">
+
+  <h2 class="title is-2"><%= @recipe.fields[:title] %> </h2>
+  <div class="column">
+    <div class="content">
+      <img class="content" src="<%= @recipe.fields[:photo].url %>" />
+      <h4 class="title is-4"> Description: </h4> <p><%= @recipe.description %></p>
+      <h4 class="title is-4"> Chef Name: </h4> <p><%= @recipe.fields[:chef]&.name %></p>
+      <div>
+        <div class="tag-container">
+          <h4 class="title is-4"> Tags: </h4>
+          <% unless @recipe.fields[:tags].nil? %>
+            <% @recipe.fields[:tags].each do |tag| %>
+              <span> <%= tag.fields[:name] %> </span>
+            <% end %>
+          <% else %>
+            <p> No tags found </p>
+          <% end %>
+        </div>
+      </div>
+      <br>
+      <%= link_to 'Show me all', recipes_path %>
+    </div>
+  </div>
+</div>
